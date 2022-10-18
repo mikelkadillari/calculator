@@ -1,0 +1,346 @@
+
+package makina_llogaritese;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JTextArea;
+import java.awt.BorderLayout;
+import javax.swing.JTextPane;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
+import java.awt.Color;
+
+public class m_ll {
+
+	private JFrame frame;
+	private JTextField rezultati;
+	private JPasswordField passwordField;
+
+	double result;
+	double firstnum;
+double secondnum;
+String operations;
+String answer;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					m_ll window = new m_ll();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public m_ll() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.getContentPane().setBackground(new Color(103, 138, 152));
+		frame.getContentPane().setFont(new Font("Tahoma", Font.ITALIC, 16));
+		frame.setBounds(100, 100, 401, 562);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(0, 0, 664, 22);
+		frame.getContentPane().add(textArea);
+		
+		rezultati = new JTextField();
+		rezultati.setFont(new Font("Tahoma", Font.BOLD, 20));
+		rezultati.setBounds(27, 48, 338, 58);
+		frame.getContentPane().add(rezultati);
+		rezultati.setColumns(10);
+		
+		JButton btnBS = new JButton("<--");
+		btnBS.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String backspace = null;
+				if(rezultati.getText().length()> 0);
+				StringBuilder strB=new StringBuilder(rezultati.getText());
+				strB.deleteCharAt(rezultati.getText().length() - 1);
+				backspace =strB.toString ();
+				rezultati.setText(backspace);
+			}
+		});
+		btnBS.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnBS.setBounds(24, 159, 77, 46);
+		frame.getContentPane().add(btnBS);
+		
+		JButton btnClear = new JButton("C");
+		btnClear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				rezultati.setText(null);
+			}
+		});
+		btnClear.setFont(new Font("Tahoma", Font.BOLD, 25));
+		btnClear.setBounds(111, 157, 76, 46);
+		frame.getContentPane().add(btnClear);
+		
+		JButton btnPrc = new JButton("%");
+		btnPrc.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				firstnum=Double.parseDouble(rezultati.getText());
+				rezultati.setText("");
+				operations ="%";
+			}
+		});
+		btnPrc.setFont(new Font("Tahoma", Font.BOLD, 25));
+		btnPrc.setBounds(197, 157, 79, 46);
+		frame.getContentPane().add(btnPrc);
+		
+		JButton btnPlus = new JButton("+");
+		btnPlus.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnPlus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				firstnum=Double.parseDouble(rezultati.getText());
+				rezultati.setText("");
+				operations ="+";
+			}
+		});
+		btnPlus.setBounds(286, 159, 79, 46);
+		frame.getContentPane().add(btnPlus);
+		
+		JButton btn7 = new JButton("7");
+		btn7.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btn7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String EnterNumber = rezultati.getText() + btn7.getText();
+				rezultati.setText(EnterNumber);
+			}
+		});
+		btn7.setBounds(24, 220, 77, 46);
+		frame.getContentPane().add(btn7);
+		
+		JButton btn4 = new JButton("4");
+		btn4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String EnterNumber = rezultati.getText() + btn4.getText();
+				rezultati.setText(EnterNumber);
+			}
+		});
+		btn4.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btn4.setBounds(24, 286, 77, 46);
+		frame.getContentPane().add(btn4);
+		
+		JButton btn1 = new JButton("1");
+		btn1.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btn1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String EnterNumber = rezultati.getText() + btn1.getText();
+				rezultati.setText(EnterNumber);
+				
+
+}
+		});
+		btn1.setBounds(24, 356, 77, 46);
+		frame.getContentPane().add(btn1);
+		
+		JButton btn8 = new JButton("8");
+		btn8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String EnterNumber = rezultati.getText() + btn8.getText();
+				rezultati.setText(EnterNumber);
+			}
+		});
+		btn8.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btn8.setBounds(110, 220, 77, 46);
+		frame.getContentPane().add(btn8);
+		
+		JButton btnMinus = new JButton("-");
+		btnMinus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				firstnum=Double.parseDouble(rezultati.getText());
+				rezultati.setText("");
+				operations ="-";
+			}
+		});
+		btnMinus.setFont(new Font("Tahoma", Font.BOLD, 21));
+		btnMinus.setBounds(286, 220, 77, 46);
+		frame.getContentPane().add(btnMinus);
+		
+		JButton btn9 = new JButton("9");
+		btn9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String EnterNumber = rezultati.getText() + btn9.getText();
+				rezultati.setText(EnterNumber);
+			}
+		});
+		btn9.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btn9.setBounds(199, 220, 77, 46);
+		frame.getContentPane().add(btn9);
+		
+		JButton btn5 = new JButton("5");
+		btn5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String EnterNumber = rezultati.getText() + btn5.getText();
+				rezultati.setText(EnterNumber);
+			}
+		});
+		btn5.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btn5.setBounds(110, 286, 77, 46);
+		frame.getContentPane().add(btn5);
+		
+		JButton btn6 = new JButton("6");
+		btn6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String EnterNumber = rezultati.getText() + btn6.getText();
+				rezultati.setText(EnterNumber);
+			}
+		});
+		btn6.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btn6.setBounds(197, 286, 77, 46);
+		frame.getContentPane().add(btn6);
+		
+		JButton btnProdhim = new JButton("*");
+		btnProdhim.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				firstnum=Double.parseDouble(rezultati.getText());
+				rezultati.setText("");
+				operations ="*";
+			}
+		});
+		btnProdhim.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnProdhim.setBounds(286, 286, 77, 46);
+		frame.getContentPane().add(btnProdhim);
+		
+		JButton btn2 = new JButton("2");
+		btn2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String EnterNumber = rezultati.getText() + btn2.getText();
+				rezultati.setText(EnterNumber);
+			}
+		});
+		btn2.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btn2.setBounds(111, 356, 77, 46);
+		frame.getContentPane().add(btn2);
+		
+		JButton btn3 = new JButton("3");
+		btn3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String EnterNumber = rezultati.getText() + btn3.getText();
+				rezultati.setText(EnterNumber);
+			}
+		});
+		btn3.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btn3.setBounds(197, 356, 77, 46);
+		frame.getContentPane().add(btn3);
+		
+		JButton btnPjestim = new JButton("/");
+		btnPjestim.setFont(new Font("Tahoma", Font.BOLD, 21));
+		btnPjestim.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				firstnum=Double.parseDouble(rezultati.getText());
+				rezultati.setText("");
+				operations ="/";
+			}
+		});
+		btnPjestim.setBounds(286, 356, 77, 46);
+		frame.getContentPane().add(btnPjestim);
+		
+		JButton btn0 = new JButton("0");
+		btn0.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String EnterNumber = rezultati.getText() + btn0.getText();
+				rezultati.setText(EnterNumber);
+			}
+		});
+		btn0.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btn0.setBounds(24, 425, 77, 46);
+		frame.getContentPane().add(btn0);
+		
+		JButton btnPik = new JButton(".");
+		btnPik.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String EnterNumber = rezultati.getText() + btnPik.getText();
+				rezultati.setText(EnterNumber);
+			}
+		});
+		btnPik.setFont(new Font("Tahoma", Font.BOLD, 22));
+		btnPik.setBounds(111, 425, 77, 46);
+		frame.getContentPane().add(btnPik);
+		
+		JButton btnPM = new JButton("+/-");
+		btnPM.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnPM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				double ops =Double.parseDouble (String.valueOf(rezultati.getText()));
+			ops=ops*(-1);
+			rezultati.setText(String.valueOf(ops));
+			}
+		});
+		btnPM.setBounds(197, 425, 77, 46);
+		frame.getContentPane().add(btnPM);
+		
+		JButton btnBaraz = new JButton("=");
+		btnBaraz.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String answer;
+				secondnum=Double.parseDouble(rezultati.getText());
+				
+			
+				if(operations ==  "+"){
+				
+					result= firstnum + secondnum;
+				answer=String.format("%.2f",result);
+				rezultati.setText(answer);
+				}
+			
+				else if(operations ==  "-")
+				{
+				
+					result= firstnum - secondnum;
+				answer=String.format("%.2f",result);
+				rezultati.setText(answer);}
+				
+				else if(operations ==  "*"){
+				
+					result= firstnum * secondnum;
+				answer=String.format("%.2f",result);
+				rezultati.setText(answer);}
+			
+				else if(operations ==  "/"){
+				
+					result= firstnum / secondnum;
+				answer=String.format("%.2f",result);
+				rezultati.setText(answer);}
+			
+				else if (operations ==  "%"){
+				
+					result= firstnum % secondnum;
+				answer=String.format("%.2f",result);
+				rezultati.setText(answer);}
+				
+			
+		
+			}}		);
+		btnBaraz.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnBaraz.setBounds(286, 425, 77, 46);
+		frame.getContentPane().add(btnBaraz);
+		
+		passwordField = new JPasswordField();
+		passwordField.setText("");
+		passwordField.setBounds(315, 303, 7, 20);
+		frame.getContentPane().add(passwordField);
+		
+}}
